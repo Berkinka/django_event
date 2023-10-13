@@ -1,0 +1,132 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="alert alert-danger duzenleme_uyari" role="alert">
+   Dikkat! Şu anda organizasyonu düzenleme modundasınız!
+  </div>
+<div class="col-lg-12">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">Organizasyon Ekle</li>
+        </ol>
+    </nav>
+ 
+    {% if form.errors %}
+    <ol>
+        <strong>Doldurulmamış alanlar bulunmaktadır.</strong><br>
+
+    </ol>
+{% endif %}
+</div>
+<form action="" method="POST">
+{% csrf_token %}
+<div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card card-body">
+            <h5> Müşteri Bilgileri</h5>
+            <table class="kutu-stili table-condensed">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Gelin</th>
+                    <th scope="col">Damat</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Ad Soyad:</th>
+                    <td>{{form.gelin_ad_soyad}}</td>
+                    <td>{{form.damat_ad_soyad}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Telefon:</th>
+                    <td>{{form.gelin_tel}}</td>
+                    <td>{{form.damat_tel}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">E-Posta:</th>
+                    <td>{{form.gelin_mail}}</td>
+                    <td>{{form.damat_mail}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Bölge</th>
+                    <td>{{form.gelin_bolge}}</td>
+                    <td>{{form.damat_bolge}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+              <div class="card card-body">
+                <h5>Şarkı Seçimi</h5>
+                <br>
+               <i>
+                {{form.sarkilar}}
+               </i> 
+              </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card card-body">
+            <h5> Organizasyon Bilgileri</h5>
+            <table class="kutu-stili table-condensed">
+                <tr>
+                    <th scope="row">Tarih:</th>
+                    <td>{{form.org_tarih}}</td>
+                </tr>
+            <tr>
+                <th scope="row">Yer:</th>
+                <td>{{form.org_otel_adi}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Salon:</th>
+                <td>{{form.salon}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Tür:</th>
+                <td>{{form.org_tur}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Kişi Sayısı:</th>
+                <td>{{form.kisi_sayisi}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Paket Türü:</th>
+                <td>{{form.paket_turu}}</td>
+            </tr>
+            <tr>
+            <tr>
+                <th scope="row">Verilen Fiyat:</th>
+                <td>{{form.verilen_fiyat}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Sözleşme:</th>
+                <td>{{form.sozlesme_yapildi}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Notlar:</th>
+              <td>{{form.notlar}}</td>
+          </tr>
+            </table>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="card card-body">
+            <h5> Hızlı İşlemler</h5>
+            <input type="submit" class="btn btn-success" name="submit" value="Kaydet">
+            <br>
+            <a href="{% url 'anasayfa' %}">
+              <button type="button" class="btn btn-sm btn-block btn-outline-danger">İptal Et</button>
+            </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<br><br><br><br><br>
+<br><br><br><br><br>
+<br><br><br><br><br>
+
+{% endblock %}

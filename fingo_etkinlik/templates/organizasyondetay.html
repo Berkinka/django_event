@@ -1,0 +1,123 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="col-lg-12">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">Organizasyon Detay</li>
+        </ol>
+    </nav>
+</div>
+{% if messages %}
+    {% for message in messages %}
+  <div class="mesaj alert alert-primary alert-dismissible fade show" role="alert">
+    <strong><center>{{message}}</center></strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% endfor %}
+  {% endif %}
+<div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card card-body">
+            <h5> Müşteri Bilgileri</h5>
+            <table class="table-condensed">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Gelin</th>
+                    <th scope="col">Damat</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Ad & Soyad:</th>
+                    <td>{{detay_cek.gelin_ad_soyad}}</td>
+                    <td>{{detay_cek.damat_ad_soyad}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Telefon:</th>
+                    <td>{{detay_cek.gelin_tel}}</td>
+                    <td>{{detay_cek.damat_tel}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">E-Posta:</th>
+                    <td>{{detay_cek.gelin_mail}}</td>
+                    <td>{{detay_cek.damat_mail}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Bölge</th>
+                    <td>{{detay_cek.gelin_bolge}}</td>
+                    <td>{{detay_cek.damat_bolge}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+              <div class="card card-body">
+                <h5>Şarkı Seçimi</h5>
+                <br>
+               <i>
+                {% for sarkilar in detay_cek.sarkilar.all %}
+                  {{ sarkilar }}
+                {% endfor %}
+               </i> 
+              </div>
+
+      </div>
+      <div class="col-md-4">
+        <div class="card card-body">
+            <h5> Organizasyon Bilgileri</h5>
+            <table class="table-condensed">
+                <tr>
+                    <th scope="row">Tarih:</th>
+                    <td>{{detay_cek.org_tarih|date:"d F Y"}}</td>
+                </tr>
+            <tr>
+                <th scope="row">Yer:</th>
+                <td>{{detay_cek.org_otel_adi}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Salon:</th>
+                <td>{{detay_cek.salon}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Tür:</th>
+                <td>{{detay_cek.org_tur}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Kişi Sayısı:</th>
+                <td>{{detay_cek.kisi_sayisi}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Paket Türü:</th>
+                <td>{{detay_cek.paket_turu}}</td>
+            </tr>
+            <tr>
+            <tr>
+                <th scope="row">Verilen Fiyat:</th>
+                <td>{{detay_cek.verilen_fiyat}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Sözleşme:</th>
+                <td>{{detay_cek.sozlesme_yapildi}}</td>
+            </tr>
+            </table>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="card card-body">
+            <h5> Hızlı İşlemler</h5>
+            <button type="button" class="btn btn-sm btn-block btn-success">Sözleşme İndir</button>
+            <a href="{% url 'guncelle' detay_cek.id %}"> 
+              <button type="button" class="btn btn-sm btn-block btn-primary">Organizasyon Detaylarını Düzenle</button>
+            </a>
+            <a href="{% url 'sil' detay_cek.id %}">
+              <button type="button" class="btn btn-sm btn-block btn-outline-danger">Organizasyonu Sil</button>
+            </a>
+        </div>
+      </div>
+    </div>
+  </div>
+<br>
+{% endblock %}

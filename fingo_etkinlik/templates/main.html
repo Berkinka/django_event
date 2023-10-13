@@ -1,0 +1,285 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Organizasyon Yönetim Sistemi </title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.13.6/datatables.min.css">
+    </head>
+<body>
+    {% include 'navbar.html' %}
+
+     {% block content %}
+
+
+     {% endblock %}
+
+     {% include 'footer.html' %}
+
+     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+     <script src="https://cdn.datatables.net/v/bs4/dt-1.13.6/datatables.min.js"></script>
+     
+
+     <script>
+        $(document).ready(function(){
+            $('#ornek').DataTable({
+                "language": {
+    "emptyTable": "Tabloda herhangi bir veri mevcut değil",
+    "info": "_TOTAL_ kayıttan _START_ - _END_ arasındaki kayıtlar gösteriliyor.",
+    "infoEmpty": "Kayıt yok",
+    "infoFiltered": "(_MAX_ kayıt içerisinden bulunan)",
+    "infoThousands": ".",
+    "lengthMenu": "Sayfada _MENU_ kayıt göster",
+    "loadingRecords": "Yükleniyor...",
+    "processing": "Yükleniyor...",
+    "search": "Ara:",
+    "zeroRecords": "Eklenen kayıt bulunamadı.",
+    "paginate": {
+        "first": "İlk",
+        "last": "Son",
+        "next": "Sonraki",
+        "previous": "Önceki"
+    },
+    "aria": {
+        "sortAscending": ": artan sütun sıralamasını aktifleştir",
+        "sortDescending": ": azalan sütun sıralamasını aktifleştir"
+    },
+    "select": {
+        "rows": {
+            "_": "%d kayıt seçildi",
+            "1": "1 kayıt seçildi"
+        },
+        "cells": {
+            "1": "1 hücre seçildi",
+            "_": "%d hücre seçildi"
+        },
+        "columns": {
+            "1": "1 sütun seçildi",
+            "_": "%d sütun seçildi"
+        }
+    },
+    "autoFill": {
+        "cancel": "İptal",
+        "fillHorizontal": "Hücreleri yatay olarak doldur",
+        "fillVertical": "Hücreleri dikey olarak doldur",
+        "fill": "Baştaki hücreleri <i>%d<\/i> ile doldur"
+    },
+    "buttons": {
+        "collection": "Koleksiyon <span class=\"ui-button-icon-primary ui-icon ui-icon-triangle-1-s\"><\/span>",
+        "colvis": "Sütun görünüşü",
+        "colvisRestore": "Görünüşü eski haline getir",
+        "copySuccess": {
+            "1": "1 satır panoya kopyalandı",
+            "_": "%ds satır panoya kopyalandı"
+        },
+        "copyTitle": "Panoya kopyala",
+        "csv": "CSV",
+        "excel": "Excel",
+        "pageLength": {
+            "-1": "Bütün satırları göster",
+            "_": "%d satır göster"
+        },
+        "pdf": "PDF",
+        "print": "Yazdır",
+        "copy": "Kopyala",
+        "copyKeys": "Tablodaki veriyi kopyalamak için CTRL veya u2318 + C tuşlarına basınız. İptal etmek için bu mesaja tıklayın veya escape tuşuna basın.",
+        "createState": "Şu andaki görünümleri Kaydet",
+        "removeAllStates": "Tüm görünümleri Sil",
+        "removeState": "Aktif Görünümleri Sil",
+        "renameState": "Aktif Görünen Adını Değiştir",
+        "savedStates": "Kaydedilmiş Görünümler",
+        "stateRestore": "Görünüm -&gt; %d",
+        "updateState": "Aktif Görünümü Güncelle"
+    },
+    "searchBuilder": {
+        "add": "Koşul Ekle",
+        "button": {
+            "0": "Arama Oluşturucu",
+            "_": "Arama Oluşturucu (%d)"
+        },
+        "condition": "Koşul",
+        "conditions": {
+            "date": {
+                "after": "Sonra",
+                "before": "Önce",
+                "between": "Arasında",
+                "empty": "Boş",
+                "equals": "Eşittir",
+                "not": "Değildir",
+                "notBetween": "Dışında",
+                "notEmpty": "Dolu"
+            },
+            "number": {
+                "between": "Arasında",
+                "empty": "Boş",
+                "equals": "Eşittir",
+                "gt": "Büyüktür",
+                "gte": "Büyük eşittir",
+                "lt": "Küçüktür",
+                "lte": "Küçük eşittir",
+                "not": "Değildir",
+                "notBetween": "Dışında",
+                "notEmpty": "Dolu"
+            },
+            "string": {
+                "contains": "İçerir",
+                "empty": "Boş",
+                "endsWith": "İle biter",
+                "equals": "Eşittir",
+                "not": "Değildir",
+                "notEmpty": "Dolu",
+                "startsWith": "İle başlar",
+                "notContains": "İçermeyen",
+                "notStartsWith": "Başlamayan",
+                "notEndsWith": "Bitmeyen"
+            },
+            "array": {
+                "contains": "İçerir",
+                "empty": "Boş",
+                "equals": "Eşittir",
+                "not": "Değildir",
+                "notEmpty": "Dolu",
+                "without": "Hariç"
+            }
+        },
+        "data": "Veri",
+        "deleteTitle": "Filtreleme kuralını silin",
+        "leftTitle": "Kriteri dışarı çıkar",
+        "logicAnd": "ve",
+        "logicOr": "veya",
+        "rightTitle": "Kriteri içeri al",
+        "title": {
+            "0": "Arama Oluşturucu",
+            "_": "Arama Oluşturucu (%d)"
+        },
+        "value": "Değer",
+        "clearAll": "Filtreleri Temizle"
+    },
+    "searchPanes": {
+        "clearMessage": "Hepsini Temizle",
+        "collapse": {
+            "0": "Arama Bölmesi",
+            "_": "Arama Bölmesi (%d)"
+        },
+        "count": "{total}",
+        "countFiltered": "{shown}\/{total}",
+        "emptyPanes": "Arama bölmesi yok",
+        "loadMessage": "Arama bölmeleri yükleniyor ...",
+        "title": "Etkin filtreler - %d",
+        "showMessage": "Tamamını Göster",
+        "collapseMessage": "Tamamını Gizle"
+    },
+    "thousands": ".",
+    "datetime": {
+        "amPm": [
+            "Ö.Ö",
+            "Ö.S"
+        ],
+        "hours": "Saat",
+        "minutes": "Dakika",
+        "next": "Sonraki",
+        "previous": "Önceki",
+        "seconds": "Saniye",
+        "unknown": "Bilinmeyen",
+        "weekdays": {
+            "6": "Paz",
+            "5": "Cmt",
+            "4": "Cum",
+            "3": "Per",
+            "2": "Çar",
+            "1": "Sal",
+            "0": "Pzt"
+        },
+        "months": {
+            "9": "Ekim",
+            "8": "Eylül",
+            "7": "Ağustos",
+            "6": "Temmuz",
+            "5": "Haziran",
+            "4": "Mayıs",
+            "3": "Nisan",
+            "2": "Mart",
+            "11": "Aralık",
+            "10": "Kasım",
+            "1": "Şubat",
+            "0": "Ocak"
+        }
+    },
+    "decimal": ",",
+    "editor": {
+        "close": "Kapat",
+        "create": {
+            "button": "Yeni",
+            "submit": "Kaydet",
+            "title": "Yeni kayıt oluştur"
+        },
+        "edit": {
+            "button": "Düzenle",
+            "submit": "Güncelle",
+            "title": "Kaydı düzenle"
+        },
+        "error": {
+            "system": "Bir sistem hatası oluştu (Ayrıntılı bilgi)"
+        },
+        "multi": {
+            "info": "Seçili kayıtlar bu alanda farklı değerler içeriyor. Seçili kayıtların hepsinde bu alana aynı değeri atamak için buraya tıklayın; aksi halde her kayıt bu alanda kendi değerini koruyacak.",
+            "noMulti": "Bu alan bir grup olarak değil ancak tekil olarak düzenlenebilir.",
+            "restore": "Değişiklikleri geri al",
+            "title": "Çoklu değer"
+        },
+        "remove": {
+            "button": "Sil",
+            "confirm": {
+                "_": "%d adet kaydı silmek istediğinize emin misiniz?",
+                "1": "Bu kaydı silmek istediğinizden emin misiniz?"
+            },
+            "submit": "Sil",
+            "title": "Kayıtları sil"
+        }
+    },
+    "stateRestore": {
+        "creationModal": {
+            "button": "Kaydet",
+            "columns": {
+                "search": "Kolon Araması",
+                "visible": "Kolon Görünümü"
+            },
+            "name": "Görünüm İsmi",
+            "order": "sıralama",
+            "paging": "Sayfalama",
+            "scroller": "Kaydırma (Scroll)",
+            "search": "Arama",
+            "searchBuilder": "Arama Oluşturucu",
+            "select": "Seçimleri",
+            "title": "Yeni Görünüm Oluştur",
+            "toggleLabel": "Kaydedilecek Olanlar"
+        },
+        "duplicateError": "Bu Görünüm Daha Önce Tamamlanmış.",
+        "emptyError": "Görünüm Boş Olamaz",
+        "emptyStates": "Herhangi Bir Görünüm Yok",
+        "removeJoiner": "ve",
+        "removeSubmit": "Sil",
+        "removeTitle": "Görünüm Sil",
+        "renameButton": "Değiştir",
+        "renameLabel": "Görünüme Yeni İsim Ver -&gt; %s:",
+        "renameTitle": "Görünüm İsmini Değiştir",
+        "removeConfirm": "Görünümü silmek istediÄŸinize emin misiniz?",
+        "removeError": "Görünüm silinemedi"
+    }
+},
+            info: false,
+            ordering: true,
+            paging: false
+            });
+        });    
+     </script>
+
+     <script>
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+          })
+    </script>
+</body>
+</html>

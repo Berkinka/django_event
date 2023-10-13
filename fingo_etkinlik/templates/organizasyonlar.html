@@ -1,0 +1,73 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="col-lg-12">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">Organizasyonlar</li>
+        </ol>
+    </nav>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xl-12" style="background-color: white";>
+                <h3>Organizasyon Listesi</h3>
+                <br>
+                <p><b>Filtreleme Seçenekleri:</b> Organizasyonların sıralanmasıyla ilgili seçenekler burada yer alacaktır.
+                    <hr></p>
+                    <form method="GET" action="">
+                    <div class="secenekler">
+                        <h4>Otel Adı:</h4>
+                           {{ kategori_secimi.id }}
+                        <select class="form-control" name="kategori">
+                            <option name="secilen">Tüm Oteller</option>
+                        {% for i in otel_adlari %}
+                        <option value="{{ i }}"
+                        {% if id_cikar == i.id %}selected{% endif %}
+                        >
+                            {{ i }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Onayla</button>
+                </form>
+                    <br>
+                <table class="table table-striped" id="ornek">
+                        <thead>
+                            <tr>
+                                <th>Org. Tarih</th>
+                                <th>Otel Adı</th>
+                                <th>Salon</th>
+                                <th>Gelin & Damat Ad Soyad</th>
+                                <th>Org. Türü</th>
+                                <th>Kişi Sayısı</th>
+                                <th>Sözleşme Yapıldı</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in is %}
+                            <tr>
+                                <td>{{i.org_tarih|date:"d F Y"}}</td>
+                                <td>{{i.org_otel_adi}}</td>
+                                <td>{{i.salon}}</td>
+                                <td>{{i.gelin_ad_soyad}} & {{i.damat_ad_soyad}}</td>
+                                <td>{{i.org_tur}}</td>
+                                <td>{{i.kisi_sayisi}}</td>
+                                <td>{{i.sozlesme_yapildi}}</td>
+                                <td>
+                                    <a href="{% url 'detay' i.id %}"> 
+                                    <button type="button" class="btn btn-sm btn-block btn-primary">Detay</button>
+                                </a> 
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                </table>
+        
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
